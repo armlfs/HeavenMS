@@ -125,12 +125,12 @@ public class ServerConstants {
     //Some Gameplay Enhancing Configurations
     //Scroll Configuration
     public static final boolean USE_PERFECT_GM_SCROLL = false;  //Scrolls from GMs never uses up slots nor fails.
-    public static final boolean USE_PERFECT_SCROLLING = false;  //Scrolls doesn't use slots upon failure.
+    public static final boolean USE_PERFECT_SCROLLING = true;  //Scrolls doesn't use slots upon failure.
     public static final boolean USE_ENHANCED_CHSCROLL = false;  //Equips even more powerful with chaos upgrade.
     public static final boolean USE_ENHANCED_CRAFTING = false;  //Apply chaos scroll on every equip crafted.
     public static final int SCROLL_CHANCE_RATE = 0;             //Number of rolls for success on a scroll, set 0 for default.
     public static final int CHSCROLL_STAT_RATE = 1;             //Number of rolls of stat upgrade on a successfully applied chaos scroll, set 1 for default.
-    public static final int CHSCROLL_STAT_RANGE = 6;            //Stat upgrade range (-N, N) on chaos scrolls.
+    public static final int CHSCROLL_STAT_RANGE = 5;            //Stat upgrade range (-N, N) on chaos scrolls.
     
     //Beginner Skills Configuration
     public static final boolean USE_ULTRA_NIMBLE_FEET = false;  //Haste-like speed & jump upgrade.
