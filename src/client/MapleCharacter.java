@@ -2623,6 +2623,12 @@ public class MapleCharacter extends AbstractAnimatedMapleMapObject {
             party *= 0.5;
         }
 	
+        int lowLevelPoint = Math.min((int) (this.level / 10), 9);
+        int highLevelPoint = Math.min(Math.max(this.level - 90, 0) / 10, 9);
+        int levelRate = (int) (Math.pow(1.6, lowLevelPoint) * Math.pow(1.25, highLevelPoint));
+        gain *= levelRate;
+        party *= levelRate;
+
         if(gain < 0) gain = Integer.MAX_VALUE;   // integer overflow, heh.
         if(party < 0) party = Integer.MAX_VALUE;   // integer overflow, heh.
         int equip = (int) Math.min((long)(gain / 10) * pendantExp, Integer.MAX_VALUE);
