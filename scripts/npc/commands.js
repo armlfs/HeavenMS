@@ -233,6 +233,7 @@ function writeHeavenMSCommandsLv0() {    //Common
         addCommand("dex", "");
         addCommand("int", "");
         addCommand("luk", "");
+        addCommand("abuff", "");
 }
 
 function writeHeavenMSCommands() {

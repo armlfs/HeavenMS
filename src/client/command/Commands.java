@@ -643,6 +643,42 @@ public class Commands {
                     
                         break;
                             
+                case "abuff":
+                        // Define advanced
+                        ps = null;
+                        rs = null;
+                        con = null;
+                        try {
+                                con = DatabaseConnection.getConnection();
+                                ps = con.prepareStatement("SELECT `skills`.`skillid`, `skills`.`skilllevel`, `characters`.`level` FROM (SELECT DISTINCT `skillid`, MAX(`skilllevel`) `skilllevel` FROM `skills` WHERE `characterid` IN (SELECT `id` FROM `characters` WHERE `accountid` = ? AND `id` <> ?) AND `skillid` IN (SELECT `skillid` FROM `accountbuffs`) GROUP BY `skillid`) `sub` LEFT JOIN `skills` ON `sub`.`skillid` = `skills`.`skillid` AND `sub`.`skilllevel` = `skills`.`skilllevel` LEFT JOIN `characters` ON `skills`.`characterid` = `characters`.`id` WHERE `characterid` IN (SELECT `id` FROM `characters` WHERE `accountid` = ? AND `id` <> ?)");
+                                ps.setInt(1, c.getPlayer().getAccountID());
+                                ps.setInt(2, c.getPlayer().getId());
+                                ps.setInt(3, c.getPlayer().getAccountID());
+                                ps.setInt(4, c.getPlayer().getId());
+                                rs = ps.executeQuery();
+
+                                while (rs.next()) {
+                                        int skillLevel = rs.getInt("skilllevel") * Math.min(rs.getInt("level"), 200) / 200;
+                                        SkillFactory.getSkill(rs.getInt("skillid")).getEffect(skillLevel).applyTo(player);
+                                }
+                        } catch (SQLException ex) {
+                                ex.printStackTrace();
+                        } finally {
+                                try {
+                                        if (ps != null && !ps.isClosed()) {
+                                                ps.close();
+                                        }
+                                        if (rs != null && !rs.isClosed()) {
+                                                rs.close();
+                                        }
+                                        if (con != null && !con.isClosed()) {
+                                                con.close();
+                                        }
+                                } catch (SQLException ex) {
+                                        ex.printStackTrace();
+                                }
+                        }
+                        break;
                 default:
                         return false;
                 }
