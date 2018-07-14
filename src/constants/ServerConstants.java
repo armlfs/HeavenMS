@@ -25,7 +25,7 @@ public class ServerConstants {
     public static final long  COUPON_INTERVAL = 60 * 60 * 1000;	//60 minutes, 3600000.
     
     public static final boolean ENABLE_PIC = true;              //Pick true/false to enable or disable Pic. Delete character needs this feature ENABLED.
-    public static final boolean ENABLE_PIN = true;              //Pick true/false to enable or disable Pin.
+    public static final boolean ENABLE_PIN = false;             //Pick true/false to enable or disable Pin.
     
     public static final boolean AUTOMATIC_REGISTER = true;      //Automatically register players when they login with a nonexistent username.
     public static final boolean BCRYPT_MIGRATION = true;        //Performs a migration from old SHA-1 and SHA-512 password to bcrypt.
