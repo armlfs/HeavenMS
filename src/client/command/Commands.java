@@ -659,7 +659,9 @@ public class Commands {
 
                                 while (rs.next()) {
                                         int skillLevel = rs.getInt("skilllevel") * Math.min(rs.getInt("level"), 200) / 200;
-                                        SkillFactory.getSkill(rs.getInt("skillid")).getEffect(skillLevel).applyTo(player);
+                                        if (skillLevel > 0) {
+                                                SkillFactory.getSkill(rs.getInt("skillid")).getEffect(skillLevel).applyTo(player);
+                                        }
                                 }
                         } catch (SQLException ex) {
                                 ex.printStackTrace();
