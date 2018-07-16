@@ -2107,7 +2107,7 @@ public class MaplePacketCreator {
                 if (ring != null) {
                         mplew.writeInt(chr.getId());
                         mplew.writeInt(ring.getPartnerChrId());
-                        mplew.writeInt(ring.getRingId());
+                        mplew.writeInt(ring.getItemId());
                 }
         }
 
